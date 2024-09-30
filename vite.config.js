@@ -16,12 +16,17 @@ export default defineConfig(({ command, mode }) => {
     console.info('Production mode');
     return {
       build: {
-        rollupOptions: {
-          input: {
-            main: resolve(__dirname, 'index.html'),
-            help: resolve(__dirname, 'help', 'index.html'),
-          },
+        lib: {
+          entry: resolve(__dirname, 'lib', 'main.js'),
+          name: 'demo',
+          fileName: (format) => `demo.${format}.js`,
         }
+        // rollupOptions: {
+        //   input: {
+        //     main: resolve(__dirname, 'index.html'),
+        //     help: resolve(__dirname, 'help', 'index.html'),
+        //   },
+        // } // this to use on pages
       }
     };
   }
